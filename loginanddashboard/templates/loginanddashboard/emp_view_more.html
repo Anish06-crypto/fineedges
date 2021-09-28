@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Employee Details</h1>
+        <ul class="list-group">
+        
+            <li class="list-group-item">{{ employee_obj.id }}</li>
+            <li class="list-group-item">{{ employee_obj.employee_name }}</li>
+            <li class="list-group-item">{{ employee_obj.email }}</li>
+            <li class="list-group-item">{{ employee_obj.current_address }}</li>
+            <li class="list-group-item">{{ employee_obj.permanent_address }}</li>
+            <li class="list-group-item">{{ employee_obj.gender }}</li>
+            <li class="list-group-item">{{ employee_obj.mobile_number }}</li>
+            <li class="list-group-item">{{ employee_obj.date_of_birth }}</li>
+            <li class="list-group-item"><a href="{{ employee_obj.qualification.url }}">Qualification</a></li>
+            <li class="list-group-item">{{ employee_obj.department_name }}</li>
+            <li class="list-group-item">{{ employee_obj.designation }}</li>
+            <li class="list-group-item">{{ employee_obj.aadhar_number }}</li>
+            <li class="list-group-item"><a href="{{ employee_obj.aadhar_copy.url }}">Aadhar</a></li>
+            <li class="list-group-item">{{ employee_obj.bank_name }}</li>
+            <li class="list-group-item">{{ employee_obj.bank_acc_number }}</li>
+            <li class="list-group-item">{{ employee_obj.pan_number }}</li>
+            <li class="list-group-item"><a href="{{ employee_obj.pan_copy.url }}">Pan</a></li>
+            <li class="list-group-item">{{ employee_obj.basic_salary }}</li>
+            <li class="list-group-item">{{ employee_obj.date_created }}</li>
+            <li class="list-group-item">{{ employee_obj.date_join }}</li>
+            <li class="list-group-item"><a href="{{ employee_obj.tax_saving_declarations_and_proofs.url }}">Tax Declarations</a></li>
+        
+        </ul>
+        <button><a href="{% url 'emplist' %}">Back</a></button>
+    {% endblock %}
+</body>
+</html>
+
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Update Employee</h1>
+    <form method="POST" class="form-control" action="employee-delete" enctype="multipart/form-data">
+        {% csrf_token %}
+         <p>Are you sure you want to delete {{ object.employee_name }}?</p>
+      <button>Submit</button>
+    </form>
+    {% endblock %}
+</body>
+</html>
+
+

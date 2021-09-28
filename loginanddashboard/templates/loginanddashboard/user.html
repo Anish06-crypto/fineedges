@@ -1,0 +1,22 @@
+{% extends 'base-user.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/employee_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Welcome</h1>
+        {{ total_employees }}
+    {% endblock %}
+</body>
+</html>
+
+

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Update Department</h1>
+    <form method="POST" class="form-control" action="department-update" >
+        {% csrf_token %}
+         {% for field in form %}
+        <div class="form-control {% if field.errors %} errors{% endif %}">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </div>
+         {% endfor %}
+      <button>Submit</button>
+    </form>
+    {% endblock %}
+</body>
+</html>
+
+

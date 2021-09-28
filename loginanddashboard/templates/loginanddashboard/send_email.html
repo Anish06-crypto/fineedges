@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/employee_details.css" %}">
+
+{% endblock css_files %}
+
+
+    {% block content %}
+    <h1>E-MAIL PAYSLIP</h1>
+        <h1>Mail has been sent to the respective employee.</h1>
+            <button><a href="{% url 'payslip-list' %}">Back</a></button>
+    {% endblock %}
+
+
+

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+    <link rel="stylesheet" href="{% static "loginanddashboard/payroll.css" %}">
+
+{% endblock css_files %}
+    
+
+{% block content %}
+    <button><a href="{% url 'payslip-list' %}">PaySlip List</a></button>
+     <h1>Add Payroll</h1>
+    <form method="POST" class="form-control" action="payroll-cal">
+        {% csrf_token %}
+      
+        {{ form.employee_id.label_tag }}
+        {{ form.employee_id }}
+        {{ form.employee_id.errors }}
+
+        {{ form.payroll_year.label_tag }}
+        {{ form.payroll_year }}
+        {{ form.payroll_year.errors }}
+
+        {{ form.payroll_month.label_tag }}
+        {{ form.payroll_month }}
+        {{ form.payroll_month.errors }}
+
+        {{ form.work_days.label_tag }}
+        {{ form.work_days }}
+        {{ form.work_days.errors }}
+
+        {{ form.basic_salary.label_tag }}
+        {{ form.basic_salary }}
+        {{ form.basic_salary.errors }}
+
+        {{ form.bonus.label_tag }}
+        {{ form.bonus }}
+        {{ form.bonus.errors }}
+
+        <div class="grid-container">
+            
+                <div class="grid-item">
+                {{ form.HRA.label_tag }}
+                {{ form.HRA }}
+                {{ form.HRA.errors }}
+
+                {{ form.CONVEYANCE.label_tag }}
+                {{ form.CONVEYANCE }}
+                {{ form.CONVEYANCE.errors }}
+
+                {{ form.LTA.label_tag }}
+                {{ form.LTA }}
+                {{ form.LTA.errors }}
+                
+                {{ form.FBP.label_tag }}
+                {{ form.FBP }}
+                {{ form.FBP.errors }}
+
+                {{ form.Incentives.label_tag }}
+                {{ form.Incentives }}
+                {{ form.Incentives.errors }}
+                </div>
+                <div class="grid-item">
+                {{ form.TDS.label_tag }}
+                {{ form.TDS }}
+                {{ form.TDS.errors }}
+
+                {{ form.P_T.label_tag }}
+                {{ form.P_T }}
+                {{ form.P_T.errors }}
+
+                {{ form.salary_Adv.label_tag }}
+                {{ form.salary_Adv }}
+                {{ form.salary_Adv.errors }}
+
+                {{ form.PF.label_tag }}
+                {{ form.PF }}
+                {{ form.PF.errors }}
+
+                {{ form.advance.label_tag }}
+                {{ form.advance }}
+                {{ form.advance.errors }}
+                </div>
+          </div>
+        <button>Submit</button>
+    </form>
+{% endblock %}
+
+
+
+
+

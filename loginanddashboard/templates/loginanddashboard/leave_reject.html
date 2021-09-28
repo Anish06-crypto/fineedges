@@ -1,0 +1,26 @@
+{% extends 'base-user.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Leave Response</h1>
+      <ul class="list-group">
+        <li>Response: {{employee.response}} / Responded on: {{ employee.date }}</li>
+      </ul>
+        
+       <button><a href="{% url 'response_delete' employee.id %}">Okay</a></button> 
+    {% endblock %}
+</body>
+</html>
+
+

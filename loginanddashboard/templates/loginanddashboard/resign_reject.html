@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Resign Response</h1>
+        <p>{{resignation.response}}</p>
+        <button><a href="{% url 'resokay' resignation.id %}">Okay</a></button>
+    {% endblock %}
+</body>
+</html>
+
+

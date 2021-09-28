@@ -1,0 +1,50 @@
+
+    
+       {% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+    
+{% endblock css_files %}
+
+
+{% block content %}
+    <h1>Employee Resignations</h1>
+
+			<table class="table table-sm">
+				<tr>
+					<th>Resign ID</th>
+					<th>Employee Name</th>
+                    <th>Reason</th>
+					<th>Accept</th>
+					<th>Reject</th>
+				</tr>
+
+				{% for res in resigns %}
+
+				<tr>
+					<td>{{res.id}}</td>
+					<td>{{res.employee_name}}</td>
+                    <td>{{res.resign_reason}}</td>
+
+					<td><a class="btn btn-sm btn-info" href="{% url 'resokay' res.id %}">Accept</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'resokay' res.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		
+    {% endblock %}
+
+
+
+
+

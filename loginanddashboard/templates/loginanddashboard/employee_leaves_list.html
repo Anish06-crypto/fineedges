@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+    
+{% endblock css_files %}
+
+
+    {% block content %}
+    <h1>Employee Leaves</h1>
+        
+			<table class="table table-sm">
+				<tr>
+					<th>Leave ID</th>
+					<th>Employee Name</th>
+                    <th>Leave Day</th>
+                    <th>Leave Type</th>
+                    <th>From</th>
+                    <th>To</th>
+					<th>Reason</th>
+                    <th>Accept</th>
+					<th>Reject</th>
+				</tr>
+
+				{% for leave in leaves %}
+
+				<tr>
+					<td>{{leave.id}}</td>
+                    <td>{{leave.emplayee_name}}</td>
+                    <td>{{leave.leave_day_type}}</td>
+                    <td>{{leave.leave_type}}</td>
+                    <td>{{leave.from_date}}</td>
+                    <td>{{leave.to_date}}</td>
+                    <td>{{leave.leave_reason}}</td>
+		
+					<td><a class="btn btn-sm btn-info" href="{% url 'levokay' leave.id %}">Accept</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'levokay' leave.id %}">Reject</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		
+    {% endblock %}
+
+
+

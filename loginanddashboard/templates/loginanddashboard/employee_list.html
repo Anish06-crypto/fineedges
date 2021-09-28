@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+    
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+
+     
+    <h1>Employee List</h1>
+        
+			<table class="table table-sm">
+				<tr>
+					<th>Employee ID</th>
+					<th>Employee Name</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>View More</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for emp in emplist %}
+
+				<tr>
+					<td>{{emp.id}}</td>
+					<td>{{emp.employee_name}}</td>
+                    <td>{{emp.gender}}</td>
+                    <td>{{emp.department_name}}</td>
+                    <td>{{emp.designation}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'empviewmore' emp.id %}">View More</a></td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'empupdate' emp.id %}">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'empdelete' emp.id %}">Delete</a></td> 
+				</tr>
+				{% endfor %}
+
+			</table>
+		
+    {% endblock %}
+</body>
+</html>
+
+

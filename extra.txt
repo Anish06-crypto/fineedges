@@ -1,0 +1,97 @@
+# class AllowanceDeductionDisplay(FormView):
+#     template_name = "loginanddashboard/payroll_cal.html"
+#     form_class = AllowanceDeductionAddForm
+#     model = models.AllowancesDeductions
+
+#     def post(self, request, *args, **kwargs):
+#         form = self.get_form()
+#         if form.is_valid():
+#             form.save()
+#         return super().post(request, *args, **kwargs)
+#     #  model = models.AllowancesDeductions
+#     #  template_name = "loginanddashboard/payroll_cal.html"
+#     #  context_object_name = "ad"
+
+#     #  def get_context_data(self, **kwargs):
+#     #     context = super().get_context_data(**kwargs)
+#     #     context['form'] = PayrollCalForm
+#     #     return context
+
+# def add_payroll(request):
+#     AllowanceFormSet = formset_factory(AllowanceAddForm, validate_min=True)
+#     DeductionFormSet = formset_factory(DeductionAddForm, validate_min=True)
+#     if request.method == 'POST':
+#             form = PayrollCalForm(request.POST)
+#             formset1 = AllowanceFormSet(request.POST)
+#             formset2 = DeductionFormSet(request.POST)
+#             if all([form.is_valid(), formset1.is_valid(), formset2.is_valid()]):
+#                 payroll = form.save()
+#                 for inline_form in formset1:
+#                     if inline_form.cleaned_data:
+#                         choice = inline_form.save(commit=False)
+#                         choice.question = payroll
+#                         choice.save()
+#                 for inline_form in formset2:
+#                     if inline_form.cleaned_data:
+#                         choice = inline_form.save(commit=False)
+#                         choice.question = payroll
+#                         choice.save()
+#                 return render(request, 'loginanddashboard/thank-you.html', {})
+#     else:
+#             form = PayrollCalForm()
+#             formset1 = AllowanceFormSet()
+#             formset2 = DeductionFormSet()
+
+#     return render(request, 'loginanddashboard/payroll_cal.html', {'form': form,
+#                                                     'formset1': formset1,
+#                                                     'formset2': formset2})
+
+
+
+
+# class SingleReviewView(DetailView):
+#     template_name = "reviews/single_review.html"
+#     model = Review
+    
+    
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         loaded_review = self.object
+#         request = self.request
+#         favorite_id = request.session.get("favorite_review")
+#         context["is_favorite"] = favorite_id == str(loaded_review.id)
+#         return context
+
+
+# class AddFavorite(View):
+#     def post(self, request):
+#         review_id =  request.POST["review_id"]
+#         request.session["favorite_review"] = review_id
+#         return HttpResponseRedirect("/reviews/" + review_id)
+
+
+
+
+
+# from django.forms.formsets import formset_factory
+
+# def add_poll(request):
+#     ChoiceFormSet = formset_factory(ChoiceForm, extra=3,
+#                                     min_num=2, validate_min=True)
+#     if request.method == 'POST':
+#         form = PollForm(request.POST)
+#         formset = ChoiceFormSet(request.POST)
+#         if all([form.is_valid(), formset.is_valid()]):
+#             poll = form.save()
+#             for inline_form in formset:
+#                 if inline_form.cleaned_data:
+#                     choice = inline_form.save(commit=False)
+#                     choice.question = poll
+#                     choice.save()
+#             return render(request, 'polls/index.html', {})
+#     else:
+#         form = PollForm()
+#         formset = ChoiceFormSet()
+
+#     return render(request, 'polls/add_poll.html', {'form': form,
+#                                                    'formset': formset})

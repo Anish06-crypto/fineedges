@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Resign Response</h1>
+    <form method="POST" class="form-control" action="resign-okay" enctype="multipart/form-data">
+        {% csrf_token %}
+         <p>CONFIRM</p>
+      <button>Submit</button>
+    </form>
+    {% endblock %}
+</body>
+</html>
+
+

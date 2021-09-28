@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/employee_details.css" %}">
+     <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+
+{% endblock css_files %}
+
+<body>
+    {% block content %}
+    <h1>Payslip List</h1>
+        
+        <table class="table table-sm">
+				<tr>
+					<th>Employee Name</th>
+					<th>Delete Payslip</th>
+                    
+				</tr>
+
+				<tr>
+					{% for employee in employees_pay %}
+                    <td><a href="{% url 'payslip' employee.pk %}">{{ employee.employee_id.employee_name }}</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'paydelete' employee.id %}">Delete</a></td> 
+					<td><a class="btn btn-info" href="{% url 'pdf_view' employee.pk %}" target="_blank">Mail Payslip</a></td>
+					
+				</tr>
+				{% endfor %}
+
+			</table>
+            
+ 
+    {% endblock %}
+</body>
+</html>
+
+

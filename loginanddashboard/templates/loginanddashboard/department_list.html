@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Fine Edges
+{% endblock title %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static "loginanddashboard/department_details.css" %}">
+    
+{% endblock css_files %}
+
+
+    {% block content %}
+    <button><a href="{% url 'depadd' %}">Add Department</a></button>
+    <h1>Department List</h1>
+
+			<table class="table table-sm">
+				<tr>
+					<th>Department ID</th>
+					<th>Department Name</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for department in departments %}
+
+				<tr>
+					<td>{{department.id}}</td>
+					<td>{{department.department_name}}</td>
+		
+					<td><a class="btn btn-sm btn-info" href="{% url 'depupdate' department.id %}">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'depdelete' department.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		
+    {% endblock %}
+
+
+
